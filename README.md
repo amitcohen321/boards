@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app lets you create a tasks board and add tasks to it.
 
 ## Available Scripts
 
