@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react"
+import "./App.css"
+import Main from "./containers/Main/Main"
+import {BrowserRouter} from "react-router-dom"
+
+//REDUX
+import {createStore, applyMiddleware, compose} from "redux"
+import thunk from "redux-thunk"
+import reducer from "./store/reducer"
+import {Provider} from "react-redux"
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<BrowserRouter>
+					<div className='App'>
+						<Main />
+					</div>
+				</BrowserRouter>
+			</Provider>
+		)
+	}
 }
 
-export default App;
+export default App

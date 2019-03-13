@@ -1,0 +1,36 @@
+.NavBar {
+	position: sticky;
+	width: 100%;
+	background-color: lightblue;
+	height: 15vh;
+	top: 0;
+	z-index: 300;
+	min-height: 80px;
+}
+
+.Logo {
+	position: absolute;
+	left: 0;
+	width: 20px;
+	margin-left: 20px;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.Logo img {
+	width: 50px;
+}
+
+ul {
+	list-style-type: none;
+	display: inline;
+	position: absolute;
+	margin-right: 20px;
+	right: 0;
+}
+
+li {
+	display: inline-block;
+	border-left: 1px solid grey;
+	padding: 10px;
+}

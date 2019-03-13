@@ -1,0 +1,64 @@
+@import "../../style/_devices.scss";
+
+.BackBtn {
+	background-color: red;
+	border-radius: 10px;
+	display: inline;
+	position: relative;
+	left: 10px;
+	top: 10px;
+	float: left;
+	padding: 5px;
+}
+
+.BackBtn::before {
+	content: "<";
+}
+
+.board-info-cont {
+	display: inline-block;
+	width: auto;
+	margin: auto;
+}
+
+.task-input {
+	width: 100%;
+}
+
+.task-input::placeholder {
+	color: grey;
+}
+
+.TasksListsCont {
+	margin: 40px 5px;
+	display: flex;
+	flex-wrap: wrap;
+
+	@media #{$large} {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	@media #{$small} {
+		flex-direction: column;
+	}
+}
+
+.List {
+	border-radius: 2px;
+	background-color: #fcca8eb8;
+	border: 1px solid black;
+	height: auto;
+	margin: 10px;
+	padding: 10px;
+	box-shadow: -1px -1px 2px 0px #795548;
+
+	@media #{$small} {
+		display: block;
+		margin: 10px auto;
+		width: 95%;
+	}
+
+	@media #{$large} {
+		width: 30%;
+	}
+}

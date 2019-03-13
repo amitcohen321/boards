@@ -1,0 +1,53 @@
+.login-form {
+	border: 1px solid grey;
+	width: 70%;
+	margin: auto;
+	padding: 10px;
+}
+
+input {
+	width: 70%;
+	display: block;
+}
+
+input[type="submit"] {
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+	width: 30%;
+	height: 30px;
+	background-color: green;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0px;
+	color: white;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+	background-color: bisque;
+	font-size: 14px;
+}
+
+input::placeholder {
+	color: grey;
+}
+
+textarea::placeholder {
+	color: grey;
+}
+
+.change-tosignup-btn,
+.change-tosignin-btn {
+	position: relative;
+	width: 20%;
+	top: 10px;
+	left: 10px;
+	float: left;
+}
+
+.login-form label {
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+}

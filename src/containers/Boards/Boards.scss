@@ -1,0 +1,101 @@
+@import "../../style/_devices.scss";
+
+.BoardsContainer {
+	margin: auto;
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	text-align: center;
+
+	@media #{$small} {
+		justify-content: center;
+	}
+
+	@media #{$large} {
+		justify-content: space-between;
+	}
+}
+
+.Board {
+	display: inline-block;
+	width: 25%;
+	box-shadow: -1px -1px 2px 0px #795548;
+	margin: 20px;
+	border: 1px solid black;
+	min-width: 174px;
+	min-height: 200px;
+	position: relative;
+	background-color: #fcca8eb8;
+	border-radius: 5px;
+}
+
+.Board a {
+	position: relative;
+	display: block;
+	height: 100%;
+	box-sizing: content-box;
+}
+
+.info-wrapper {
+	position: relative;
+}
+
+.Board:hover {
+	box-shadow: blue 0px 0px 4px 2px;
+	cursor: pointer;
+}
+
+span {
+	margin: 20px;
+	display: block;
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	color: none;
+}
+
+.green {
+	color: green;
+}
+
+.blue {
+	color: blue;
+}
+
+.red {
+	color: red;
+	background-color: #a63830 !important; /* important used to override materialize */
+}
+
+.priority-cont {
+	position: relative;
+	width: 100%;
+	bottom: 15px;
+	margin-top: 10px;
+}
+
+.icon-DeleteBoard {
+	display: block;
+	width: 100%;
+	color: red;
+	font-weight: bold;
+	position: absolute;
+	margin: 0px;
+	padding: 0;
+	bottom: 0;
+	background-color: black;
+	z-index: 200;
+}
+
+.icon-DeleteBoard:hover {
+	box-shadow: red 0px 0px 4px 2px;
+}
+
+a:visited,
+a:link {
+	color: black;
+}

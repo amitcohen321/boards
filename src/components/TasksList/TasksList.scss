@@ -1,0 +1,30 @@
+@import "../../style/_devices.scss";
+
+.TasksList {
+	position: relative;
+	display: block;
+	margin-top: 20px;
+	text-align: right;
+}
+
+.ListTitle {
+	display: block;
+}
+
+.Task div,
+.Task span {
+	display: inline;
+}
+
+.add-task-circle:hover {
+	cursor: pointer;
+}
+
+.list-icon {
+	display: block;
+}
+
+.btn-floating {
+	display: block;
+	margin: auto;
+}

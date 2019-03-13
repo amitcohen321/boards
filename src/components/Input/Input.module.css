@@ -1,0 +1,15 @@
+.InputCont {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.Input {
+	width: 95%;
+	display: block;
+	margin: 10px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
