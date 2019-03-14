@@ -16,6 +16,10 @@ input[type="submit"] {
 	color: white;
 }
 
+input[type="submit"]:disabled {
+	background-color: grey;
+}
+
 .Form input[type="text"],
 .Form textarea,
 select {

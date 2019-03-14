@@ -5,16 +5,24 @@ import "../../style/fonts.scss"
 const Input = props => {
 	let input
 
+	const createBoardFormInputClasses = [classes.Input, "placeholder-font"]
+	let validationError = null
+	if (props.input.validation) {
+		if (!props.input.validation.isValid && props.input.validation.touched) {
+			createBoardFormInputClasses.push(classes.InvalidInput)
+			validationError = <p className={classes.InputValidationErrorText}>Please enter a valid {props.input.id}</p>
+		}
+	}
+
 	switch (props.input.inputType) {
 		case "email":
 			input = (
 				<input
-					className='placeholder-font'
 					type='email'
 					placeholder={props.input.placeholder}
 					value={props.input.value}
 					onChange={props.onTextChange}
-					className='input'
+					className='input placeholder-font'
 				/>
 			)
 			break
@@ -32,31 +40,32 @@ const Input = props => {
 		case "text":
 			input = (
 				<input
-					className='placeholder-font'
 					type='text'
 					placeholder={props.input.placeholder}
 					value={props.input.value}
 					onChange={props.onTextChange}
-					className='input'
+					className={createBoardFormInputClasses.join(" ")}
 				/>
 			)
 			break
 		case "textarea":
 			input = (
 				<textarea
-					className='placeholder-font'
 					rows='5'
 					cols='50'
 					placeholder={props.input.placeholder}
 					value={props.input.value}
 					onChange={props.onTextChange}
-					className='input'
+					className={createBoardFormInputClasses.join(" ")}
 				/>
 			)
 			break
 		case "select":
 			input = (
-				<select defaultValue='selected' onChange={props.onTextChange}>
+				<select
+					className={createBoardFormInputClasses.join(" ")}
+					defaultValue='selected'
+					onChange={props.onTextChange}>
 					<option name='selected'>Choose priority</option>
 					{props.input.options.map(option => {
 						return (
@@ -77,6 +86,7 @@ const Input = props => {
 			<div className={classes.InputCont}>
 				<label>{props.input.id.charAt(0).toUpperCase() + props.input.id.slice(1)}</label>
 				{input}
+				{validationError}
 			</div>
 		</>
 	)

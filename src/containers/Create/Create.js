@@ -16,13 +16,24 @@ class Create extends Component {
 				id: "name",
 				inputType: "text",
 				placeholder: "Insert board name...",
-				value: ""
+				value: "",
+				validation: {
+					required: true,
+					isValid: false,
+					touched: false
+				}
 			},
 			{
 				id: "description",
 				inputType: "textarea",
-				placeholder: "Insert 1 line description...",
-				value: ""
+				placeholder: "Insert description...",
+				value: "",
+				validation: {
+					required: true,
+					maxLength: 144,
+					isValid: false,
+					touched: false
+				}
 			},
 			{
 				id: "priority",
@@ -34,16 +45,55 @@ class Create extends Component {
 					{value: "high", displayValue: "High"},
 					{value: "medium", displayValue: "Medium"},
 					{value: "low", displayValue: "Low"}
-				]
+				],
+				validation: {
+					required: true,
+					isDefaultValue: true,
+					isValid: false,
+					touched: false
+				}
 			}
-		]
+		],
+		isFormValid: false
+	}
+
+	checkValidity(value, rules) {
+		let isValid = true
+
+		if (rules.required) {
+			isValid = value.trim() !== "" && isValid
+		}
+		if (rules.maxLength) {
+			isValid = value.length <= rules.maxLength && isValid
+		}
+		if (rules.isDefaultValue) {
+			isValid = value != "Choose priority" && isValid
+		}
+
+		return isValid
 	}
 
 	onTextChange = (event, id) => {
 		const idx = this.state.CreateBoardForm.findIndex(element => element.id === id)
 		const arr = [...this.state.CreateBoardForm]
 		arr[idx].value = event.target.value
-		this.setState({CreateBoardForm: arr})
+		arr[idx].validation.isValid = this.checkValidity(arr[idx].value, arr[idx].validation)
+		arr[idx].validation.touched = true
+
+		let isFormValid = false // TODO: fix logic to scaling logic
+		// for (let input in this.CreateBoardForm) {
+		// }
+		if (
+			this.state.CreateBoardForm[0].validation.isValid &&
+			this.state.CreateBoardForm[1].validation.isValid &&
+			this.state.CreateBoardForm[2].validation.isValid
+		) {
+			isFormValid = true
+		} else {
+			isFormValid = false
+		}
+		console.log(isFormValid)
+		this.setState({CreateBoardForm: arr, isFormValid: isFormValid})
 	}
 
 	submitFormHandler = event => {
@@ -86,7 +136,19 @@ class Create extends Component {
 
 	render() {
 		let formElements = this.state.CreateBoardForm.map((element, index) => {
-			return <Input key={element.id} input={element} onTextChange={event => this.onTextChange(event, element.id)} />
+			let descriptionLabelMessage = ""
+			if (element.id === "description") {
+				descriptionLabelMessage = "up to 144 characters long"
+			}
+			return (
+				<div key={element.id}>
+					<Input input={element} onTextChange={event => this.onTextChange(event, element.id)} />
+					<p className={classes.DescriptionLabelMessage}>{descriptionLabelMessage}</p>
+					<br />
+					<br />
+					<br />
+				</div>
+			)
 		})
 
 		if (this.props.loading) {
@@ -98,7 +160,7 @@ class Create extends Component {
 					<form onSubmit={this.submitFormHandler} className={classes.Form}>
 						{formElements}
 						{this.props.authData.token ? (
-							<input type='submit' value='Create' />
+							<input type='submit' value='Create' disabled={!this.state.isFormValid} />
 						) : (
 							<>
 								<input type='submit' value='Sign Up' />
