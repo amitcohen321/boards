@@ -19,10 +19,14 @@ const TasksList = props => {
 
 		const taskUtils = task.isEdit ? null : (
 			<div>
-				<i onClick={() => props.taskDeleteHandler(props.listrole, task.id)} className='material-icons'>
+				<i
+					onClick={() => props.taskDeleteHandler(props.listrole, task.id)}
+					className='material-icons'>
 					delete
 				</i>
-				<i onClick={() => props.taskEditHandler(props.listrole, task.id)} className='material-icons'>
+				<i
+					onClick={() => props.taskEditHandler(props.listrole, task.id)}
+					className='material-icons'>
 					edit
 				</i>
 			</div>
@@ -64,7 +68,6 @@ const TasksList = props => {
 			break
 		}
 		default:
-			console.log(props.listrole)
 			listIcon = ""
 	}
 
@@ -74,9 +77,16 @@ const TasksList = props => {
 				<b> {props.listTitle}</b>{" "}
 			</h6>{" "}
 			<i className='material-icons list-icon'>{listIcon}</i>
-			<input className='task-input' type='text' onChange={props.listTextChangedHandler} placeholder='Add task...' />
+			<input
+				className='task-input'
+				type='text'
+				onChange={props.listTextChangedHandler}
+				placeholder='Add task...'
+			/>
 			{/* value={props.input} should be appended in 1 line up to cleat add task input after adding task */}
-			<button className='btn-floating btn-small waves-effect waves-light green' disabled={!props.input}>
+			<button
+				className='btn-floating btn-small waves-effect waves-light green'
+				disabled={!props.input}>
 				<i className='material-icons add-task-circle' onClick={props.addTaskHandler}>
 					add_circle
 				</i>

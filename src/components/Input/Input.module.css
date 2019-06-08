@@ -1,12 +1,24 @@
 .Input,
 select,
-textarea {
+textarea,
+option {
 	width: 100%;
 	display: block;
 	margin: 10px;
 	box-sizing: initial;
 	padding: 0;
 	margin: 0;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	color: grey;
+}
+
+.Input::placeholder,
+select::placeholder,
+textarea::placeholder {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	color: grey;
 }
 
 label {

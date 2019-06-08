@@ -25,7 +25,9 @@ const BoardThumbnail = props => {
 					<p>{props.board.description}</p>
 				</div>
 			</Link>
-			<span className='icon-DeleteBoard' onClick={event => props.boardDeleteHandler(event, props.board.id)}>
+			<span
+				className='icon-DeleteBoard'
+				onClick={event => props.boardDeleteHandler(event, props.board.id)}>
 				X
 			</span>
 		</div>

@@ -92,7 +92,6 @@ class Create extends Component {
 		} else {
 			isFormValid = false
 		}
-		console.log(isFormValid)
 		this.setState({CreateBoardForm: arr, isFormValid: isFormValid})
 	}
 
@@ -142,7 +141,10 @@ class Create extends Component {
 			}
 			return (
 				<div key={element.id}>
-					<Input input={element} onTextChange={event => this.onTextChange(event, element.id)} />
+					<Input
+						input={element}
+						onTextChange={event => this.onTextChange(event, element.id)}
+					/>
 					<p className={classes.DescriptionLabelMessage}>{descriptionLabelMessage}</p>
 					<br />
 					<br />

@@ -34,9 +34,12 @@ class Auth extends Component {
 
 	submitFormHandler = event => {
 		event.preventDefault()
-		const email = this.state.LoginForm[this.state.LoginForm.findIndex(inputItem => inputItem.id === "email")].value
-		const password = this.state.LoginForm[this.state.LoginForm.findIndex(inputItem => inputItem.id === "password")]
-			.value
+		const email = this.state.LoginForm[
+			this.state.LoginForm.findIndex(inputItem => inputItem.id === "email")
+		].value
+		const password = this.state.LoginForm[
+			this.state.LoginForm.findIndex(inputItem => inputItem.id === "password")
+		].value
 
 		this.props.onLoginSubmit(email, password, this.state.isSignup)
 	}
@@ -47,7 +50,13 @@ class Auth extends Component {
 
 	render() {
 		let formElements = this.state.LoginForm.map((element, index) => {
-			return <Input key={element.id} input={element} onTextChange={event => this.onTextChange(event, element.id)} />
+			return (
+				<Input
+					key={element.id}
+					input={element}
+					onTextChange={event => this.onTextChange(event, element.id)}
+				/>
+			)
 		})
 
 		let redirectTo = ""

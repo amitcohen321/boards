@@ -10,7 +10,11 @@ const Input = props => {
 	if (props.input.validation) {
 		if (!props.input.validation.isValid && props.input.validation.touched) {
 			createBoardFormInputClasses.push(classes.InvalidInput)
-			validationError = <p className={classes.InputValidationErrorText}>Please enter a valid {props.input.id}</p>
+			validationError = (
+				<p className={classes.InputValidationErrorText}>
+					Please enter a valid {props.input.id}
+				</p>
+			)
 		}
 	}
 
@@ -66,7 +70,7 @@ const Input = props => {
 					className={createBoardFormInputClasses.join(" ")}
 					defaultValue='selected'
 					onChange={props.onTextChange}>
-					<option name='selected'>Choose priority</option>
+					<option name='selected'>Choose priority...</option>
 					{props.input.options.map(option => {
 						return (
 							<option key={option.value} value={option.value}>

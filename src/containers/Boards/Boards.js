@@ -25,7 +25,13 @@ class Boards extends Component {
 
 	render() {
 		const boardsCollection = this.props.boards.map(board => {
-			return <BoardThumbnail key={board.id} board={board} boardDeleteHandler={this.boardDeleteHandler} />
+			return (
+				<BoardThumbnail
+					key={board.id}
+					board={board}
+					boardDeleteHandler={this.boardDeleteHandler}
+				/>
+			)
 		})
 
 		if (this.props.loading) {
